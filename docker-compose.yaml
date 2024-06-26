@@ -1,0 +1,14 @@
+services:
+  lackey:
+    platform: linux/amd64
+    container_name: lackey
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5901:5901"
+    networks:
+      - lackey
+
+networks:
+  lackey:
