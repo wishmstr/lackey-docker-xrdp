@@ -1,0 +1,8 @@
+#!/bin/bash
+xrdb $HOME/.Xresources
+
+export DISPLAY=:1
+
+startxfce4 &
+
+# cd LackeyCCG && wine LackeyCCG
