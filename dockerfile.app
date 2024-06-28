@@ -1,4 +1,9 @@
-FROM lackey-base
+FROM ghcr.io/lackeyforall/docker-base-image:latest
+
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y wine32:i386
+
+RUN apt install -y rsyslog xfce4-power-manager vim
+RUN systemctl enable rsyslog
 
 WORKDIR /app
 

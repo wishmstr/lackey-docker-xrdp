@@ -5,4 +5,8 @@ export DISPLAY=:1
 
 startxfce4 &
 
-# cd LackeyCCG && wine LackeyCCG
+sleep 15
+
+while true; do
+  cd /app/LackeyCCG && WINEDEBUG=+all wine Z:\\app\\LackeyCCG\\LackeyCCG.exe >>wine_debug.log 2>&1
+done
