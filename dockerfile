@@ -1,18 +1,18 @@
 FROM ubuntu:latest
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y software-properties-common wget && \
-    wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
-    apt-key add winehq.key && \
-    add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && \
-    apt-get update
+#RUN dpkg --add-architecture i386 && \
+#    apt-get update && \
+#    apt-get install -y software-properties-common wget && \
+#    wget -nc https://dl.winehq.org/wine-builds/winehq.key && \
+#    apt-key add winehq.key && \
+#    add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main' && \
+#    apt-get update
 
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     curl \
     wine \
-    wine32:i386 \
-    winetricks \
+#    wine32:i386 \
+#    winetricks \
     net-tools \
     unzip \
     xfce4 \
@@ -21,9 +21,9 @@ RUN apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV WINEARCH=win32
+#ENV WINEARCH=win32
 
-RUN wineboot --init
+#RUN wineboot --init
 
 WORKDIR /app
 
@@ -41,7 +41,7 @@ RUN chown -R app:app /nonexistent /wineprefix
 USER app
 
 ENV USER=root
-ENV PASSWORD=vncpassword
+ENV PASSWORD=asdfasdf
 
 RUN mkdir -p ~/.vnc && \
     echo "$PASSWORD" | vncpasswd -f > ~/.vnc/passwd && \
