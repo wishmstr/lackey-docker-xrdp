@@ -7,8 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5901:5901"
+    environment:
+      VNC_PASSWORD: asdfasdf
+      DISPLAY: :1
     networks:
       - lackey
-
 networks:
   lackey:
