@@ -5,8 +5,15 @@ export DISPLAY=:1
 
 startxfce4 &
 
-sleep 15
+#Start PulseAudio Server
+pulseaudio -D
 
-while true; do
-  cd /app/LackeyCCG && WINEDEBUG=+all wine Z:\\app\\LackeyCCG\\LackeyCCG.exe >>wine_debug.log 2>&1
-done
+#Initialize Wine and open Notepad
+#wine /app/.wine/drive_c/windows/system32/notepad.exe
+#sleep 15
+
+
+
+#while true; do
+#  cd /app/LackeyCCG && WINEDEBUG=+all wine Z:\\app\\LackeyCCG\\LackeyCCG.exe >>wine_debug.log 2>&1
+#done
