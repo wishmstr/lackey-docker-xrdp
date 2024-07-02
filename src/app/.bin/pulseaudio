@@ -1,0 +1,11 @@
+#!/usr/bin/pulseaudio -nF
+# This file is part of PulseAudio.
+# Use PulseAudio to enable audio over VNC
+
+# Load system modules
+load-module module-native-protocol-unix
+load-module module-esound-protocol-unix
+load-module module-native-protocol-tcp auth-anonymous=1
+load-module module-esound-protocol-tcp auth-anonymous=1
+load-module module-zeroconf-publish
+load-module module-combine-sink

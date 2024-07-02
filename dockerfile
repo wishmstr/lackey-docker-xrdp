@@ -6,6 +6,10 @@ RUN usermod -aG pulse,pulse-access app
 
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
 
+RUN apt-get install -y \
+  pulseaudio-module-zeroconf
+
+#
 # Perform the rest of the commands as the app user.
 #
 WORKDIR /app
@@ -19,12 +23,8 @@ COPY --chown=app:app .artifacts/LackeyCCG /app/LackeyCCG
 # RUN curl -LO https://lackeyccg.com/LackeyCCGWin.zip
 # RUN unzip LackeyCCGWin.zip -d .
 
-# RUN chmod -R 755 LackeyCCG
-
-#
-# Set the environment variables needed for the X11 server and the vnc server.
-#
-
+# TODO: Download noVNC tarball from https://github.com/novnc/noVNC here
+# TODO: Unpack noVNC tarball here
 
 #
 # Set the entrypoint script that is run when the container starts.

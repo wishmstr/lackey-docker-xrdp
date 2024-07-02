@@ -28,8 +28,12 @@ export DISPLAY=:1
 # Create .Xauthority file
 sudo -u app touch /app/.Xauthority
 
-# Restart D-Bus service to apply new policy
-systemctl restart dbus
+# Start PulseAudio
+if [ ! -d /app/.config/pulse ]; then
+  sudo -u app mkdir -p /app/.config/pulse
+fi
+
+sudo -u app pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
 
 echo "Starting vncserver use the app user..."
 sudo -u app DISPLAY=$DISPLAY USER=root vncserver $DISPLAY -geometry 1280x800 -depth 24 -localhost no
@@ -39,5 +43,7 @@ sudo -u app DISPLAY=$DISPLAY USER=root vncserver $DISPLAY -geometry 1280x800 -de
 
 cd LackeyCCG
 sudo -u app wine LackeyCCG
+
+# TODO: Start noVNC here
 
 tail -f /dev/null

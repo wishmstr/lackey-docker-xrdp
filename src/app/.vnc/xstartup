@@ -4,7 +4,6 @@ xrdb $HOME/.Xresources
 
 export DISPLAY=:1
 
-pulseaudio -D
 startxfce4 &
 
 #Initialize Wine and open Notepad
