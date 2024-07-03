@@ -7,7 +7,10 @@ RUN usermod -aG pulse,pulse-access app
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install wine32 -y
 
 RUN apt-get install -y \
-  pulseaudio-module-zeroconf
+  pulseaudio-module-zeroconf \
+  curl \
+  git \
+  python3-numpy
 
 #
 # Perform the rest of the commands as the app user.
@@ -24,7 +27,9 @@ COPY --chown=app:app .artifacts/LackeyCCG /app/LackeyCCG
 # RUN unzip LackeyCCGWin.zip -d .
 
 # TODO: Download noVNC tarball from https://github.com/novnc/noVNC here
+RUN curl -LO https://github.com/novnc/noVNC/archive/refs/tags/v1.5.0.tar.gz
 # TODO: Unpack noVNC tarball here
+RUN tar -xvzf v1.5.0.tar.gz
 
 #
 # Set the entrypoint script that is run when the container starts.
