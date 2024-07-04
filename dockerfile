@@ -10,7 +10,9 @@ RUN apt-get install -y \
   pulseaudio-module-zeroconf \
   curl \
   git \
-  python3-numpy
+  python3-numpy \
+  xfce4-goodies \
+  xrdp
 
 #
 # Perform the rest of the commands as the app user.

@@ -8,6 +8,7 @@ services:
     ports:
       - "5901:5901"
       - "8080:8080"
+      - "3389:3389"
     environment:
       VNC_PASSWORD: asdfasdf
       DISPLAY: :1
