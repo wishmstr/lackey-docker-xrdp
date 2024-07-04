@@ -41,10 +41,10 @@ sudo -u app DISPLAY=$DISPLAY USER=root vncserver $DISPLAY -geometry 1280x800 -de
 # keep the container running
 # tail -f /app/.vnc/*.log
 
-# TODO: Start noVNC here
-/app/noVNC-1.5.0/utils/novnc_proxy --vnc localhost:5901 --listen localhost:5901
-
 cd LackeyCCG
-sudo -u app wine LackeyCCG
+sudo -u app wine LackeyCCG &
+
+# TODO: Start noVNC here
+/app/noVNC-1.5.0/utils/novnc_proxy --vnc localhost:5901 --listen 0.0.0.0:8080
 
 tail -f /dev/null
