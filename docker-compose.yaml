@@ -13,5 +13,11 @@ services:
       DISPLAY: :1
     networks:
       - lackey
+    volumes:
+      - plugins:/app/LackeyCCG/plugins
+      - secure:/app/LackeyCCG/secure
 networks:
   lackey:
+volumes:
+  plugins:
+  secure:
