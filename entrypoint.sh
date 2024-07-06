@@ -38,6 +38,13 @@ sudo -u app pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=12
 echo "Starting vncserver use the app user..."
 sudo -u app DISPLAY=$DISPLAY USER=root vncserver $DISPLAY -geometry 1280x800 -depth 24 -localhost no
 
+#start xrdp
+echo "Starting xrdp service"
+sudo service xrdp start 
+
+#sudo xrdp -c /app/.xrdp/xrdp.ini
+#sudo xrdp-sesman -c /app/.xrdp/sesman.ini
+
 # keep the container running
 # tail -f /app/.vnc/*.log
 

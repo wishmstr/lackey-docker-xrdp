@@ -1,4 +1,4 @@
-FROM ghcr.io/lackeyforall/docker-base-image:0.0.9
+FROM ghcr.io/lackeyforall/docker-base-image:0.0.10
 
 COPY src/etc /etc
 
@@ -14,7 +14,16 @@ RUN apt-get install -y \
   xfce4-goodies \
   xrdp
 
-#
+
+  ARG USERNAME=newuser
+  ARG PASSWORD=asdfasdf
+  RUN useradd -m -s /bin/bash $USERNAME && \
+    echo "$USERNAME:$PASSWORD" | chpasswd
+
+
+RUN xrdp-keygen xrdp auto
+
+    #
 # Perform the rest of the commands as the app user.
 #
 WORKDIR /app
